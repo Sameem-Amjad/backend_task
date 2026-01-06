@@ -12,8 +12,6 @@ const articleRouter = Router();
 // Public: List articles
 articleRouter.get(
     Paths.Articles.Get,
-    authenticate,
-    authorize([Role.ADMIN, Role.EDITOR, Role.VIEWER]),
     validateSchema(z.object({
         query: z.object({
             page: z.string().optional(),
