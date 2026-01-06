@@ -10,8 +10,7 @@ export const ENV = Object.freeze(z.object({
     JWT_ACCESS_EXPIRY: z.string(),
     JWT_REFRESH_EXPIRY: z.string(),
     NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-    SMTP_HOST: z.string().optional().nullable(),
-    SMTP_PORT: z.string().optional().nullable(),
-    SMTP_USER: z.string().optional().nullable(),
-    SMTP_PASS: z.string().optional().nullable(),
+    SENDGRID_API_KEY: z.string().min(1),
+    SENDGRID_EMAIL: z.string().email(),
+    SENDGRID_OTP_TEMPLATE_ID: z.string().min(1),
 }).parse(process.env));
