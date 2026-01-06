@@ -23,7 +23,7 @@ app.use('/api/v1', routes);
 // Health Check
 app.get('/health', (req: Request, res: Response) => {
     ResponseHandler.success(
-        res, status.OK,
+        res, {}, status.OK,
         ENV.NODE_ENV === 'production' ? commonResponses.success.SERVICE_UP : commonResponses.success.SERVICE_UP_WITH_ENV
     );
 });
@@ -31,7 +31,7 @@ app.get('/health', (req: Request, res: Response) => {
 // 404 Handler
 app.use((req: Request, res: Response) => {
     ResponseHandler.fail(
-        res, status.NOT_FOUND,
+        res, {}, status.NOT_FOUND,
         commonResponses.fail.RESOURCE_NOT_FOUND
     );
 });
