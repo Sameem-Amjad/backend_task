@@ -12,6 +12,8 @@ export const transporter = nodemailer.createTransport({
     user: ENV.SMTP_USER,
     pass: ENV.SMTP_PASS,
   },
+  logger: true,
+  debug: true,
 } as SMTPTransport.Options);
 
 export const sendVerificationEmail = async (email: string, otp: string) => {
@@ -22,6 +24,7 @@ export const sendVerificationEmail = async (email: string, otp: string) => {
       subject: 'Verify your email address',
       html: getVerificationTemplate(otp),
     });
+
     logger.info(`Verification email sent to ${email}`);
   } catch (error) {
     logger.error('Error sending verification email', error);
